@@ -1,0 +1,7 @@
+add_action(loop-start)  //will execute code right before the first post in a loop.
+add_action(pre_get_posts) //will execute before the query for the posts (i.e. you can add additional db query syntax) value must be an array it appears.) -- this might be used to kill the query for the post list if it is the category page for the main series page?
+add_action(template_redirect) // useful if you want to redirect a call to a certain category page to a different file for the template (As a last resort I could include a default file in the plugin directory and then use template_redirect to redirect wordpress to this file when the series specific category is called?).
+
+add_filter(category_template) //apply a filter to the category template (i.e. use regex? for find/replace?) Another optional way of modifying the category template for the master series table of contents.
+
+add_filter(the_posts) // Does this execute code before all the posts listed on a "loop" page?
