@@ -5,3 +5,47 @@ add_action(template_redirect) // useful if you want to redirect a call to a cert
 add_filter(category_template) //apply a filter to the category template (i.e. use regex? for find/replace?) Another optional way of modifying the category template for the master series table of contents.
 
 add_filter(the_posts) // Does this execute code before all the posts listed on a "loop" page?
+
+
+***********UPGRADING ORGSERIES TO WORK WITH WP 2.3************************
+test structure
+
+function create_series_taxonomy($taxonomy) {
+//will create the new series taxonomy in the new terms db schema
+//HAVE THE BELOW FUNCTION run when plugin initializes...will have to do a check to make sure series object isn't already added to the db?
+@function register_taxonomy( $taxonomy, $object_type, $args = array() ) {   //line 138 in taxonomy.php
+	global $wp_taxonomies;
+
+	$defaults = array('hierarchical' => false, 'update_count_callback' => '');
+	$args = wp_parse_args($args, $defaults);
+
+	$args['name'] = $taxonomy;
+	$args['object_type'] = $object_type;
+	$wp_taxonomies[$taxonomy] = (object) $args;
+}
+
+
+//Do a wp_version check when plugin is initialized to make sure it is version 2.3++ and have some sort of message display if the it is not wp2.3 so people don't inadvertently "mess things up".
+}
+
+function edit_series_taxonomy($taxonomy) {
+//will edit the series taxonomy in the new terms db schema
+}
+
+function hook_for_write_post_page($series) {
+//create a series edit/add section on the write/edit post pages
+}
+
+function load_category_icon($series) {
+//add-on to the hook_for_write_post_page($series) that enables attaching of category icons to the series?
+}
+
+function display series_manage_page($series) {
+//add-on for the WordPress admin panel that will list all posts belonging to a series...perhaps this could simply be "hooked" into the filter schema of the new manage page?  i.e. would add a new filter option to display posts by series?
+}
+
+function add_custom_key_for_order_in_series($post) {
+//In order to give the option of ordering posts in a certain way...each post in a series will recieve a automatic "custom_key" (existing WordPress structure) to determine the post_order.  This means I will have to first use the default post_by_term WordPress call to get the list of posts and then go through that list to determine what order they get displayed in. Tricky... (try using a count check -- ie. I can get the total posts per term in the count field then I just count down each time I go to match the custom_key).
+NOTE: A potential bug could be encountered if I don't account for when a post is deleted that is part of a series because the custom "order" key will also be deleted...
+//
+}
