@@ -9,3 +9,17 @@ add_filter(the_posts) // Does this execute code before all the posts listed on a
 ***********UPGRADING ORGSERIES TO WORK WITH WP 2.3************************
 NOTES FOR USERS
 *  in order to use the series-icons functionality of this plugin it is VERY IMPORTANT that your default uploads folder  IS NOT set to organize the uploads into month and year based folders or the icons won't work correctly.
+
+********current checklists***************
+//SERIES TOC
+
+//Next/Previous post in series links
+- create new token template for this
+- populate the new code in relevant functions (token_replace(), post-content filter)
+- create new function for creating/calling up the next/previous links
+
+//SERIES ARCHIVE AND SERIES ARCHIVE DEFAULT THEME TEMPLATE
+- provide option to the user to choose how series posts are displayed on the series archive page. 
+		- edit/modify existing template tags so that it will include the option settings.
+- provide an option template for what to display at the top of series archive pages (then will have to populate a template-filter for series archive pages.
+		- create a new template tag for this?
