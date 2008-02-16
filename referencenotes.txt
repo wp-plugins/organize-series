@@ -14,9 +14,7 @@ NOTES FOR USERS
 //SERIES TOC
 
 //Next/Previous post in series links
-- create new token template for this
-- populate the new code in relevant functions (token_replace(), post-content filter)
-- create new function for creating/calling up the next/previous links
+- write default .css styling for the ticker.
 
 //SERIES ARCHIVE AND SERIES ARCHIVE DEFAULT THEME TEMPLATE
 - provide option to the user to choose how series posts are displayed on the series archive page. 
