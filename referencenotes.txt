@@ -13,11 +13,8 @@ NOTES FOR USERS
 ********current checklists***************
 //SERIES TOC
 
-//Next/Previous post in series links
-- write default .css styling for the ticker.
-
 //SERIES ARCHIVE AND SERIES ARCHIVE DEFAULT THEME TEMPLATE
-- provide option to the user to choose how series posts are displayed on the series archive page. 
+- provide option to the user to choose how series posts are displayed on the series archive page. (i.e. by ordered by date(ASC|DESC) or by part (ASC|DESC)).
 		- edit/modify existing template tags so that it will include the option settings.
 - provide an option template for what to display at the top of series archive pages (then will have to populate a template-filter for series archive pages.
 		- create a new template tag for this?
