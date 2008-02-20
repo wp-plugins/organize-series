@@ -11,22 +11,22 @@ NOTES FOR USERS
 *  in order to use the series-icons functionality of this plugin it is VERY IMPORTANT that your default uploads folder  IS NOT set to organize the uploads into month and year based folders or the icons won't work correctly.
 
 ********current checklists***************
+//do a latest_series() template tag;
+-- this would call up the most recent series to be published (possibly include in its own widget?)
+
 //PHP-INLINE-DOCS
 ...finish all the inline documentation for the plugin
 
-//XML-RPC
-...implement xml-rpc hook-ins so orgSeries stuff will be available for peeps posting from something other than WordPress.
-
 //OrgSeries Widget
-...implement widgets for users.
-- series_toc widget
-- postlist_widget (displayed on a single post page of a post that is part of a series?)
+.- set default options for display in the widget options control.
 
 //FIX ALL .CSS/LAYOUT (pretify defaults)
 ...also remove redundant code.
+...replace all "cat" references in css and throughout default options with "series"
 
 //BUGS
-.. fix the series toc so that it will display series icons - curently doesn't do it.
+...possible bug:  add_action/add_filter for publish_posts and edit_posts isn't put in (see save_posts).  When it was activated there were duplicate series added via ajax/saving the post.  Need to see why this is and fix it.
+...MAJOR BUG - something in the widget display (load) is killing APACHE! As is, can't use widgets
 
 *****************UPGRADING ORGSERIES TO UTILIZE AND WORK WITH WP 2.5*********
 // SERIES REWRITE QUERYVAR
@@ -40,10 +40,16 @@ NOTES FOR USERS
 ...create the new actions/filters for displaying orgSeries information.
 ...change series checklist so that it lists series in order of popularity?
 	- new function wp_popular_series_checklist() (see wp_popular_terms_checklist()?)
+
+//XML-RPC
+...implement xml-rpc hook-ins so orgSeries stuff will be available for peeps posting from something other than WordPress.
 .
 //changes to manage->post and manage->series pages.
 
 //changes to orgSeries options?
+
+//OTHER STUFF
+-- go through all template tags and make sure there is an option for executing them without pulling from the options if high traffic sites want to cut down on db queries (they'd just use the tags in their site and do all the html themselves).
 
 //SHOULD ANYTHING BE HOOKED INTO THE NEW MEDIA UPLOADER PAGE?
 
