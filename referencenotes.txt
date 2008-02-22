@@ -11,6 +11,8 @@ NOTES FOR USERS
 *  in order to use the series-icons functionality of this plugin it is VERY IMPORTANT that your default uploads folder  IS NOT set to organize the uploads into month and year based folders or the icons won't work correctly.
 
 ********current checklists***************
+//RSS integration has to be FIXED.
+
 //do a latest_series() template tag;
 -- this would call up the most recent series to be published (possibly include in its own widget?)
 
