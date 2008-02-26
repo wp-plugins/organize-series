@@ -1,26 +1,10 @@
-add_action(loop-start)  //will execute code right before the first post in a loop.
-add_action(pre_get_posts) //will execute before the query for the posts (i.e. you can add additional db query syntax) value must be an array it appears.) -- this might be used to kill the query for the post list if it is the category page for the main series page?
-add_action(template_redirect) // useful if you want to redirect a call to a certain category page to a different file for the template (As a last resort I could include a default file in the plugin directory and then use template_redirect to redirect wordpress to this file when the series specific category is called?).
-
-
-add_filter(the_posts) // Does this execute code before all the posts listed on a "loop" page?
-
-
 ***********UPGRADING ORGSERIES TO WORK WITH WP 2.3************************
 NOTES FOR USERS
 *  in order to use the series-icons functionality of this plugin it is VERY IMPORTANT that your default uploads folder  IS NOT set to organize the uploads into month and year based folders or the icons won't work correctly.
 
 ********current checklists***************
-//RSS integration has to be FIXED.
-
-//do a latest_series() template tag;
--- this would call up the most recent series to be published (possibly include in its own widget?)
-
 //PHP-INLINE-DOCS
 ...finish all the inline documentation for the plugin
-
-//OrgSeries Widget
-.- set default options for display in the widget options control.
 
 //FIX ALL .CSS/LAYOUT (pretify defaults)
 ...also remove redundant code.
@@ -28,7 +12,6 @@ NOTES FOR USERS
 
 //BUGS
 ...possible bug:  add_action/add_filter for publish_posts and edit_posts isn't put in (see save_posts).  When it was activated there were duplicate series added via ajax/saving the post.  Need to see why this is and fix it.
-...MAJOR BUG - something in the widget display (load) is killing APACHE! As is, can't use widgets
 
 *****************UPGRADING ORGSERIES TO UTILIZE AND WORK WITH WP 2.5*********
 // SERIES REWRITE QUERYVAR
@@ -52,6 +35,7 @@ NOTES FOR USERS
 
 //OTHER STUFF
 -- go through all template tags and make sure there is an option for executing them without pulling from the options if high traffic sites want to cut down on db queries (they'd just use the tags in their site and do all the html themselves).
+-- get things looking prettier...
 
 //SHOULD ANYTHING BE HOOKED INTO THE NEW MEDIA UPLOADER PAGE?
 
