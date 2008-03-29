@@ -11,7 +11,18 @@ NOTES FOR USERS
 ...replace all "cat" references in css and throughout default options with "series"
 
 //BUGS
-...possible bug:  add_action/add_filter for publish_posts and edit_posts isn't put in (see save_posts).  When it was activated there were duplicate series added via ajax/saving the post.  Need to see why this is and fix it.
+...ticket #800 on dev.wp-plugins.org
+<?php
+	$template_path = TEMPLATEPATH;
+	echo 'TEMPLATE PATH' . $template_path;
+	global $rewrite;
+	$rewrite_test = $wp_rewrite->root;
+	echo 'REWRITE_ROOT' . $rewrite_test;
+
+?>
+and http://ewdev01/breakbulk/content/series/ is what is set for the series_toc url on the series options page.
+users email (pmo238) = portiz@cbizmedia.com
+
 
 *****************UPGRADING ORGSERIES TO UTILIZE AND WORK WITH WP 2.5*********
 // SERIES REWRITE QUERYVAR
