@@ -29,7 +29,7 @@
       <div id="side-sortables" class="meta-box-sortables ui-sortable">
         <div id="submitdiv" class="postbox">
           <div class="handlediv" title="Click to toggle"><br /></div>
-          <h3 class="handle"><span><?php _e('Publish Issue', $org_domain); ?></span></h3>
+          <h3 class="hndle"><span><?php _e('Publish Issue', $org_domain); ?></span></h3>
           <form id="im_publish_form" method="get" action="edit.php">
             <div class="hidden-fields">
               <input type="hidden" name="page" id="im_publish_page" value="manage-issues" />
@@ -72,7 +72,7 @@
                 </div>
               </div>
               <div id="major-publishing-actions">
-                <div id="publishing-action"><input type="submit" value="<?php _e('Publish Issue', $org_domain); ?>" class="button-primary" id="publish" name="publish" /></div>
+                <div id="publishing-action"><input type="submit" value="<?php _e('Publish Issue', $org_domain); ?>" class="button-primary" id="publish" name="publish" onclick="var im_post_IDs = new Array(); jQuery('.im_article_list li').each( function(){im_post_IDs.push(jQuery(this).attr('id').substring(5));});jQuery('#im_publish_posts').val(im_post_IDs.join(','));alert(im_post_IDS);" /></div>
                 <div class="clear"></div>
               </div>
             </div>
