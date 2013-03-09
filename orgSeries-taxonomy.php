@@ -434,6 +434,7 @@ function wp_set_post_series_draft_transition( $post ) {
 	
 function wp_set_post_series( $post_ID = 0, $post, $series_id = array(), $dont_skip = false, $is_published = false) {
 	$post_series = null;
+	$post_shorttitle = array();
 
 	
 	//fix for the revisions feature in WP 2.6+  && bulk-edit stuff.
@@ -452,6 +453,7 @@ function wp_set_post_series( $post_ID = 0, $post, $series_id = array(), $dont_sk
 	 } else {
 		$post_series = is_array($series_id) ? $series_id : array($series_id);
 	}
+
 	
 	$post_series = os_strarr_to_intarr($post_series);
 	if ( empty($post_series) || (count($post_series) >= count($old_series)) ) {
@@ -491,7 +493,7 @@ function wp_set_post_series( $post_ID = 0, $post, $series_id = array(), $dont_sk
 		//if we don't have any changes in the series or series part info (or series post status) then let's get out and save time.
 		$p_status = $post->post_status;
 		if($p_status != 'draft' && $p_status != 'future' && $p_status != 'pending')
-			$ispublished = TRUE;
+			$is_published = TRUE;
 		$count = count($post_series);
 		$c_chk = 0;
 		foreach ( $post_series as $ser ) {
@@ -502,8 +504,9 @@ function wp_set_post_series( $post_ID = 0, $post, $series_id = array(), $dont_sk
 				$p_ser_edit[] = $ser; //these are the series we need to set the parts for (leave the rest alone when we get to this section).
 			}
 		}
-				
-		/*print_r($count);
+		
+		/*var_dump($p_status);		
+		print_r($count);
 		print_r(' AND ');
 		print_r($c_chk);
 		exit; /**/
@@ -693,6 +696,7 @@ function inline_edit_series($column_name, $type) {
 			<span><?php _e('Part:', 'organize-series'); ?></span>
 			<input size="3" type="text" name="series_part" class="series_part"  />
 			<input type="hidden" name="series_post_id" class="series_post_id"  />
+			<input type="hidden" name="is_series_save" value="1" />
 		
 		
 	</div></div></fieldset>
