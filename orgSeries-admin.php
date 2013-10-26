@@ -90,7 +90,7 @@ global $checkpage, $orgseries, $pagenow;
 function orgSeries_manage_script() {
 	wp_enqueue_script( 'thickbox' );
 	wp_enqueue_script('media-upload');
-	wp_enqueue_script('orgseries_scripts','/'.PLUGINDIR.'/'.SERIES_DIR.'/js/orgseries_scripts.js',array('jquery', 'thickbox')); 
+	wp_enqueue_script('orgseries_scripts', WP_PLUGIN_URL.'/'.SERIES_DIR.'/js/orgseries_scripts.js', array('jquery', 'thickbox'), ORG_SERIES_VERSION, true); 
 }
 
 ######ON THE FLY ADD SERIES########
@@ -313,7 +313,7 @@ function orgSeries_custom_column_action($column_name, $id) {
 function orgSeries_custom_manage_posts_filter() {
 	global $orgseries;
 	$series_name = '';
-	if (isset($_GET['series'])) $series_name = $_GET['series'];
+	if (isset($_GET[SERIES_QUERYVAR])) $series_name = $_GET[SERIES_QUERYVAR];
 		
 	wp_dropdown_series('show_option_all='.__('View all series', 'organize-series').'&hide_empty=0&show_count=0&selected='.$series_name);
 }
@@ -331,7 +331,7 @@ function add_series_to_right_now() {
 	$num_series = wp_count_terms('series');
 	$num = number_format_i18n( $num_series );
 	$text = _n( 'Series', 'Series', $num_series, 'organize-series' );
-	$manage_link = get_option('siteurl') . '/wp-admin/edit-tags.php?taxonomy=series';
+	$manage_link = get_option('siteurl') . '/wp-admin/edit-tags.php?taxonomy=' . SERIES_QUERYVAR;
 	if ( current_user_can( 'manage_series' ) ) {
 		$series_num = "<a href='$manage_link'>$num</a>";
 		$series_text = "<a href='$manage_link'>$text</a>";
